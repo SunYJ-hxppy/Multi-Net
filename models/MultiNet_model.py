@@ -244,9 +244,8 @@ class MultiNetModel(BaseModel):
         total_seg_loss              = 3*self.loss_seg_clean_fake + 3*self.loss_seg_clean_fake_ce
 
         self.loss_gradient_smooth   = self.smooth_loss(None, self.dvf_flow)
-        self.loss_stn_clean         = self.criterionwarp2(self.real_B, self.warp_clean)
         self.loss_stn_clean_l1      = self.criterionwarp(self.real_B, self.warp_clean)
-        total_reg_loss              = self.loss_gradient_smooth + 2*self.loss_stn_clean + 2*self.loss_stn_clean_l1
+        total_reg_loss              = self.loss_gradient_smooth + 2*self.loss_stn_clean_l1
 
         self.loss_joint_moco_seg  = total_seg_loss + total_reg_loss
         if self.amp:
