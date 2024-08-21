@@ -58,7 +58,7 @@ class MultiNetModel(BaseModel):
             opt (Option class)-- stores all the experiment flags; needs to be a subclass of BaseOptions
         """
         BaseModel.__init__(self, opt)
-        self.loss_names = ['D_A', 'G_A', 'idt_A', 'D_B', 'G_B', 'idt_B', 'perceptual_clean', 'seg_clean_fake', 'seg_clean_fake_ce', 'cycle_B', 'gradient_smooth', 'art', 'stn_clean']
+        self.loss_names = ['D_A', 'G_A', 'idt_A', 'D_B', 'G_B', 'idt_B', 'seg_clean_fake', 'seg_clean_fake_ce', 'cycle_B', 'gradient_smooth', 'art', 'stn_clean']
         
         if self.isTrain:
             visual_names_A = ['real_A', 'fake_B', 'pred_mask_clean_fake', 'dvf_flow'] 
@@ -221,7 +221,6 @@ class MultiNetModel(BaseModel):
         self.dvf_copy_norm = normalize_image(self.dvf_copy_mean)
         
         self.loss_art = self.criterionart(self.dvf_copy_norm, self.artifact_norm[:,1,:,:]) 
-        self.loss_perceptual_clean = self.Perceptualloss(self.fake_B, self.real_B) * 2
      
         if self.amp:
             self.real_A = self.real_A.half()
@@ -229,7 +228,7 @@ class MultiNetModel(BaseModel):
 
         self.loss_ssim = (1 - ms_ssim(self.real_B, self.rec_B)) * 10 
                 
-        self.loss_G = self.loss_G_A + self.loss_G_B + self.loss_idt_A + self.loss_idt_B + self.loss_cycle_B + self.loss_ssim + self.loss_art + self.loss_perceptual_clean
+        self.loss_G = self.loss_G_A + self.loss_G_B + self.loss_idt_A + self.loss_idt_B + self.loss_cycle_B + self.loss_ssim + self.loss_art 
         if self.amp:
             self.amp_scaler.scale(self.loss_G).backward()
         else:
