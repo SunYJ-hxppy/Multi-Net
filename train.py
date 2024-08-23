@@ -138,7 +138,7 @@ if __name__ == '__main__':
                                                                padding   = 0,
                                                                normalize = True )
                 
-                writer.add_image( 'train/UDDN---realA---realB---fakeB---rec_B---pred_mask_clean_fake---dvf_flow---warp_clean', output_img_grid, epoch )
+                writer.add_image( 'train/realA---realB---fakeB---rec_B---pred_mask_clean_fake---dvf_flow---warp_clean', output_img_grid, epoch )
 
                 "------------------TensorBoard progress image Plot-----------------"
                 for imgs1 in [real_A, motion_structure, clean_structure, motion_artifact0, fake_B, real_B]: 
