@@ -21,7 +21,7 @@ import numpy as np
 
 class MultiNetModel(BaseModel): 
     """
-    This class implements the UDDN model, an unsupervised method to remove motion artifacts in MRI without paired data.
+    This class implements the MultiNet model, an unsupervised method to remove motion artifacts in MRI without paired data.
 
     The model training requires '--dataset_mode unaligned' dataset.
     By default, it uses a '--netG resnet_9blocks' ResNet generator,
@@ -52,7 +52,7 @@ class MultiNetModel(BaseModel):
         return parser
 
     def __init__(self, opt):
-        """Initialize the UDDN class.
+        """Initialize the MultiNet class.
 
         Parameters:
             opt (Option class)-- stores all the experiment flags; needs to be a subclass of BaseOptions
