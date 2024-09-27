@@ -3,7 +3,7 @@
 
 This project is developed to correct the motion artifacts and segment the brain tissue with motion artifacts. 
 
-![image](https://github.com/user-attachments/assets/9a2b2dc2-2ede-4f93-a90f-40cf39f64102)
+![image](https://github.com/user-attachments/assets/38034a28-2fb5-4284-8e1c-b203a0b978a9)
 
 # How to use
 - Train a model:
